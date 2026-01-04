@@ -83,7 +83,7 @@ rag_chain = (
         {
             "context": RunnableLambda(lambda x: x["question"])
             | retriever
-            | format_docs,
+            | RunnableLambda(format_docs),
             "question": RunnableLambda(lambda x: x["question"]),
             "chat_history": RunnableLambda(lambda x: x["chat_history"]),
         }
