@@ -1,0 +1,17 @@
+# LangChain Core and Community Hub
+langchain
+langchain-community
+langchain-core
+
+# Free LLM & Embeddings Integrations
+langchain-google-genai
+langchain-huggingface
+sentence-transformers
+
+# Data Processing & Storage
+langchain-text-splitters
+langchain-chroma
+youtube-transcript-api
+
+# Utilities
+python-dotenv
