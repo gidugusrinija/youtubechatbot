@@ -8,7 +8,7 @@ from langchain_community.vectorstores import Chroma
 
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables import RunnablePassthrough
+from langchain_core.runnables import RunnablePassthrough, RunnableParallel
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -61,14 +61,14 @@ def format_docs(docs):
 
 # 4. The Chain (LCEL)
 rag_chain = (
-        {"context": retriever | format_docs, "question": RunnablePassthrough()}
+        RunnableParallel({"context": retriever | format_docs, "question": RunnablePassthrough()})
         | prompt
         | llm
         | StrOutputParser()
 )
 
 
-print("...Asking AI...")
+print("Enter Your Questions about the YouTube Video (type 'exit' to quit):")
 while True:
     query = input()
     if query.lower() in ["exit", "quit", "q"]:
